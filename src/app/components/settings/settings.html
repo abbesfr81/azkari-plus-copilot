@@ -1,0 +1,16 @@
+<section class="settings-container">
+  <div class="settings-group">
+    <h2 class="settings-title">{{ language() === 'ar' ? 'اللغة' : 'Langue' }}</h2>
+    <div class="language-options">
+      @for (lang of languages; track lang.value) {
+      <button
+        class="language-button"
+        [class.active]="language() === lang.value"
+        (click)="setLanguage(lang.value)"
+      >
+        {{ lang.label }}
+      </button>
+      }
+    </div>
+  </div>
+</section>

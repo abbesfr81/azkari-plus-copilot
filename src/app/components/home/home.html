@@ -1,0 +1,10 @@
+<section class="home-grid">
+  @for (category of categories; track category.path) {
+  <a [routerLink]="category.path" class="category-card">
+    <span class="category-icon">{{ language() === 'ar' ? category.iconAr : category.iconFr }}</span>
+    <span class="category-label">{{
+      language() === 'ar' ? category.labelAr : category.labelFr
+    }}</span>
+  </a>
+  }
+</section>

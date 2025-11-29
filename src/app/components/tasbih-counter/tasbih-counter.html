@@ -1,0 +1,40 @@
+<section class="tasbih-container">
+  <div class="tasbih-content">
+    <div class="counter-display">
+      <span class="count">{{ count() }}</span>
+      <span class="max-count">/ {{ maxCount() }}</span>
+    </div>
+
+    <button class="counter-button" (click)="increment()">
+      <span class="sr-only">{{ language() === 'ar' ? 'تسبيح' : 'Tasbih' }}</span>
+    </button>
+
+    <div class="controls">
+      <button class="control-button" (click)="reset()">
+        <span class="sr-only">{{ language() === 'ar' ? 'إعادة' : 'Reset' }}</span>
+        ↺
+      </button>
+
+      <button
+        class="control-button"
+        [class.active]="vibrationEnabled()"
+        (click)="toggleVibration()"
+      >
+        <span class="sr-only">{{ language() === 'ar' ? 'الاهتزاز' : 'Vibration' }}</span>
+        📳
+      </button>
+    </div>
+
+    <div class="max-count-controls">
+      @for (count of [33, 99, 100]; track count) {
+      <button
+        class="max-count-button"
+        [class.active]="maxCount() === count"
+        (click)="setMaxCount(count)"
+      >
+        {{ count }}
+      </button>
+      }
+    </div>
+  </div>
+</section>

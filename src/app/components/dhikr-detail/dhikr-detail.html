@@ -1,0 +1,38 @@
+<section class="dhikr-detail">
+  @if (dhikr(); as dhikr) {
+  <article class="dhikr-card">
+    <div class="dhikr-header">
+      <button class="favorite-button" [class.is-favorite]="isFavorite()" (click)="toggleFavorite()">
+        <span class="sr-only">
+          {{
+            language() === 'ar'
+              ? isFavorite()
+                ? 'إزالة من المفضلة'
+                : 'إضافة إلى المفضلة'
+              : isFavorite()
+              ? 'Remove from favorites'
+              : 'Add to favorites'
+          }}
+        </span>
+        ★
+      </button>
+    </div>
+
+    <div class="dhikr-content">
+      <h1 class="dhikr-text">{{ dhikr[language()] }}</h1>
+      <p class="dhikr-description">{{ dhikr[`${language()}Description`] }}</p>
+
+      <div class="dhikr-info">
+        <span class="count-label">
+          {{ language() === 'ar' ? 'عدد المرات:' : 'Répétitions :' }}
+        </span>
+        <span class="count-value">{{ dhikr.count }}</span>
+      </div>
+    </div>
+  </article>
+  } @else {
+  <p class="not-found">
+    {{ language() === 'ar' ? 'لم يتم العثور على الذكر' : 'Dhikr not found' }}
+  </p>
+  }
+</section>

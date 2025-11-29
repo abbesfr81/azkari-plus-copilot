@@ -1,0 +1,20 @@
+<section class="favorites-list">
+  @if (!favorites().length) {
+  <p class="no-favorites">
+    {{ language() === 'ar' ? 'لا توجد أذكار في المفضلة' : 'No favorite adhkar' }}
+  </p>
+  } @else { @for (dhikr of favorites(); track dhikr.id) {
+  <article class="dhikr-card" [routerLink]="['/dhikr', dhikr.id]">
+    <div class="dhikr-content">
+      <h2 class="dhikr-title">{{ dhikr[language()] }}</h2>
+      <p class="dhikr-description">{{ dhikr[`${language()}Description`] }}</p>
+    </div>
+    <button class="favorite-button is-favorite" (click)="toggleFavorite(dhikr.id, $event)">
+      <span class="sr-only">{{
+        language() === 'ar' ? 'إزالة من المفضلة' : 'Remove from favorites'
+      }}</span>
+      ★
+    </button>
+  </article>
+  } }
+</section>
